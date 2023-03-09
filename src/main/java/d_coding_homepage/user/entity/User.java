@@ -30,8 +30,15 @@ public class User {
     private String email;
 
     @OneToMany(mappedBy = "user")
-    private List<StudyUser> studyUsers = new ArrayList();;
+    private List<StudyUser> studyUsers = new ArrayList();
 
-    @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     private List<UserRole> roles = new ArrayList();
+
+    public User(String email, String password, String name, String phoneNumber){
+        this.email = email;
+        this.password = password;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+    }
 }
