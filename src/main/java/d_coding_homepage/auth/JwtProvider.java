@@ -21,10 +21,10 @@ public class JwtProvider {
 
     private final UserAuthoritiesService userAuthoritiesService;
     @Value("${jwt-key}")
-    private final String secretKey;
+    private String secretKey;
 
-    private Long jwtValidityTime;
-    private Long refreshValidityTime;
+    private Long jwtValidityTime = 4 * 60 * 60 * 1000L; //4시간
+    private Long refreshValidityTime = 14 * 24 * 60 * 60 * 1000L; //2주
 
     public String createAccessToken(String payload, List<String> roles) {
         Claims claims = Jwts.claims().setSubject(payload);
