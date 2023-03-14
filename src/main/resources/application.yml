@@ -1,0 +1,38 @@
+server:
+  port: 8081
+
+spring:
+  sql:
+    init:
+      mode: always
+  servlet:
+    multipart:
+      max-file-size: 15MB
+      max-request-size: 15MB
+  datasource:
+    url: jdbc:mysql://localhost:3306/${dbName}
+    username: root
+    password: ${MYSQL-PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    generate-ddl: true
+  #    show-sql: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  redis:
+    host: localhost
+    port: 6379
+security:
+  jwt:
+    token:
+      secret-key: ${jwt-key}
+      expire-length: 36000000
+      expire-length-refresh: 5184000000

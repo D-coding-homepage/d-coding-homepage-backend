@@ -23,7 +23,7 @@ public class SecurityConfig{
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers( "/**").permitAll()
+                .antMatchers( "/user/**").permitAll()
                 .and()
                 .exceptionHandling()
                 .and()
