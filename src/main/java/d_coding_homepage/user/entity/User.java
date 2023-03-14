@@ -17,16 +17,12 @@ import java.util.List;
 @Table(name = "users")
 public class User {
 
-    @Id
-    @GeneratedValue
-    private String id;
-
     private String password;
 
     private String name;
 
     private String phoneNumber;
-
+    @Id
     private String email;
 
     @OneToMany(mappedBy = "user")
@@ -40,5 +36,9 @@ public class User {
         this.password = password;
         this.name = name;
         this.phoneNumber = phoneNumber;
+    }
+
+    public void addRole(UserRole userRole) {
+        this.roles.add(userRole);
     }
 }

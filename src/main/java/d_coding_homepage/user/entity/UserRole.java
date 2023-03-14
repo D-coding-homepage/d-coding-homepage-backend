@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name="roles")
@@ -26,4 +27,21 @@ public class UserRole {
 
     private String rolename;
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        UserRole userRole = (UserRole) o;
+        return Objects.equals(user, userRole.user) && Objects.equals(rolename, userRole.rolename);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(user, rolename);
+    }
 }
